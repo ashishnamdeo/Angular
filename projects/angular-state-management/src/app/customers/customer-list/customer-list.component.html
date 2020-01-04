@@ -1,0 +1,16 @@
+<p>customer-list works!</p>
+
+===== {{customers | json}}
+<table>
+    <tr *ngFor="let customer of customers">
+        <th scope="row">{{customer.name}}</th>
+        <td>{{customer.phone}}</td>
+        <td>{{customer.address}}</td>
+        <td>{{customer.membership}}</td>
+        <th>
+          <a (click)=editCustomer(customer)>edit</a>
+          <br>
+          <a (click)=deleteCustomer(customer)>delete</a>
+        </th>
+      </tr>
+</table>

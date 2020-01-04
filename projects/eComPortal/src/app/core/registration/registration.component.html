@@ -1,0 +1,67 @@
+<div>
+    {{registrationForm.errors | json}}
+    <mat-error *ngIf="!registrationForm.errors?.invalidPassword">
+        Password and Confirm Password should be same!
+      </mat-error>
+    <form [formGroup]="registrationForm" (ngSubmit)="onRegister()">
+        <mat-form-field class="full-width">
+            <input type="text" matInput formControlName="firstName" placeholder="First Name">
+            <mat-error *ngIf="registrationForm.get('firstName').hasError('required')">
+                Please provide firstname.
+            </mat-error>
+            <mat-error *ngIf="registrationForm.get('firstName').hasError('minlength')">
+                Min Length 5 Char
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <input type="text" matInput formControlName="lastName" placeholder="Last Name">
+            <mat-error *ngIf="registrationForm.get('lastName').hasError(required)">
+                Please provide the lastname
+            </mat-error>
+            <mat-error *ngIf="registrationForm.get('lastName').hasError('minlength')">
+                    Min Length 5 Char
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <input type="text" matInput formControlName="email" placeholder="email">
+            <mat-error *ngIf="registrationForm.get('email').hasError('email')">
+                Please entere the valid email id
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <input type="text" matInput formControlName="mobile" placeholder="Mobile">
+            <mat-error *ngIf="registrationForm.get('mobile').hasError('mobile')">
+                    Please entere the valid mobile number
+                </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <input type="password" matInput formControlName="password" placeholder="Password">
+            
+                
+        </mat-form-field>
+   
+        <mat-form-field class="full-width">
+            <input type="password" matInput formControlName="confirmPassword" placeholder="Confirm Password">
+            <mat-error *ngIf="!registrationForm.errors?.invalidPassword">
+                Password and Confirm Password should be same!
+              </mat-error>
+                
+        </mat-form-field>
+        <mat-form-field class="example-full-width"> 
+            <input matInput [matDatepicker]="picker" placeholder="Date of Birth" formControlName="dob">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="registrationForm.get('dob').hasError('required')">
+                    Please entere the valid email id
+                </mat-error>
+        </mat-form-field>
+        <div>
+            <button [disabled]="registrationForm.invalid" type="submit" mat-raised-button
+                color="primary">Submit</button>
+        </div>
+        Do passwords match? 
+        <strong>{{!registrationForm.hasError('invalidPassword')}}</strong>
+    </form>
+</div>
+{{registrationForm.value | json }}

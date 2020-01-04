@@ -1,0 +1,289 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "eComPortal": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/eComPortal",
+      "sourceRoot": "projects/eComPortal/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/eComPortal",
+            "index": "projects/eComPortal/src/index.html",
+            "main": "projects/eComPortal/src/main.ts",
+            "polyfills": "projects/eComPortal/src/polyfills.ts",
+            "tsConfig": "projects/eComPortal/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/eComPortal/src/favicon.ico",
+              "projects/eComPortal/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "projects/eComPortal/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/eComPortal/src/environments/environment.ts",
+                  "with": "projects/eComPortal/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "eComPortal:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "eComPortal:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "eComPortal:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/eComPortal/src/test.ts",
+            "polyfills": "projects/eComPortal/src/polyfills.ts",
+            "tsConfig": "projects/eComPortal/tsconfig.spec.json",
+            "karmaConfig": "projects/eComPortal/karma.conf.js",
+            "assets": [
+              "projects/eComPortal/src/favicon.ico",
+              "projects/eComPortal/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "projects/eComPortal/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/eComPortal/tsconfig.app.json",
+              "projects/eComPortal/tsconfig.spec.json",
+              "projects/eComPortal/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/eComPortal/e2e/protractor.conf.js",
+            "devServerTarget": "eComPortal:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "eComPortal:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "@ecom/core": {
+      "projectType": "library",
+      "root": "projects/ecom/core",
+      "sourceRoot": "projects/ecom/core/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ecom/core/tsconfig.lib.json",
+            "project": "projects/ecom/core/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ecom/core/src/test.ts",
+            "tsConfig": "projects/ecom/core/tsconfig.spec.json",
+            "karmaConfig": "projects/ecom/core/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ecom/core/tsconfig.lib.json",
+              "projects/ecom/core/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "angular-state-management": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "sass"
+        }
+      },
+      "root": "projects/angular-state-management",
+      "sourceRoot": "projects/angular-state-management/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/angular-state-management",
+            "index": "projects/angular-state-management/src/index.html",
+            "main": "projects/angular-state-management/src/main.ts",
+            "polyfills": "projects/angular-state-management/src/polyfills.ts",
+            "tsConfig": "projects/angular-state-management/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/angular-state-management/src/favicon.ico",
+              "projects/angular-state-management/src/assets"
+            ],
+            "styles": [
+              "projects/angular-state-management/src/styles.sass"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/angular-state-management/src/environments/environment.ts",
+                  "with": "projects/angular-state-management/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "angular-state-management:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "angular-state-management:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "angular-state-management:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/angular-state-management/src/test.ts",
+            "polyfills": "projects/angular-state-management/src/polyfills.ts",
+            "tsConfig": "projects/angular-state-management/tsconfig.spec.json",
+            "karmaConfig": "projects/angular-state-management/karma.conf.js",
+            "assets": [
+              "projects/angular-state-management/src/favicon.ico",
+              "projects/angular-state-management/src/assets"
+            ],
+            "styles": [
+              "projects/angular-state-management/src/styles.sass"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/angular-state-management/tsconfig.app.json",
+              "projects/angular-state-management/tsconfig.spec.json",
+              "projects/angular-state-management/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/angular-state-management/e2e/protractor.conf.js",
+            "devServerTarget": "angular-state-management:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "angular-state-management:serve:production"
+            }
+          }
+        }
+      }
+    }
+  },
+ "defaultProject": "angular-state-management"
+}

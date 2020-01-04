@@ -1,0 +1,17 @@
+<form class="example-form" (ngSubmit)="onLogin()">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Email" name="email" [(ngModel)]="user.email">
+    </mat-form-field>
+    <br/><br/><br/>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="password" type="password" name="password" [(ngModel)]="user.password">
+    </mat-form-field>
+  <br/><br/><br/>
+    <div>
+      <button type="submit" mat-raised-button color="primary">Login</button>
+      <button type="button" routerLink="/register" mat-raised-button color="primary">Sign Up</button>
+    </div>
+  
+  </form>
+  <a  routerLink="/user/profile">profile</a>
+  <a  routerLink="/admin/dashboard">Dashboard</a>
